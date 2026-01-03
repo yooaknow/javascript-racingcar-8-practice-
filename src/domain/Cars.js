@@ -11,3 +11,27 @@
 - 최종 출력을 위한 값 필요
 */
 
+import Car from "./Car.js";
+
+class Cars {
+  constructor(names) {
+    this.cars = names.map((name) => new Car(name));
+  }
+
+  race(random) {
+    this.cars.forEach((car) => {
+      const num = random();
+      car.run(num);
+    });
+  }
+
+  findWinners() {
+    const max = Math.max(...this.cars.map((c) => c.position));
+
+    return this.cars
+      .filter((c) => c.position === max)
+      .map((c) => c.name);
+  }
+}
+
+export default Cars;

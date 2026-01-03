@@ -7,46 +7,21 @@
 
 class Car {
   constructor(name, position = 0) {
+    const trimmed = (name ?? "").trim();
 
-    if (name.length >=5 || name.length === 0)
-    {
-      throw new Error("[Error] 이름은 1~5자이어야합니다.");
-    } 
+    if (trimmed.length === 0 || trimmed.length > 5) {
+      throw new Error("[ERROR] 이름은 1~5자여야 합니다.");
+    }
 
-      this.name = name;
-      this.position = position;
-}
-  
+    this.name = trimmed;
+    this.position = position;
+  }
 
-  run (num){
-    if (num>=4)
-    this.position += 1;
+  run(num) {
+    if (num >= 4) {
+      this.position += 1;
+    }
   }
 }
 
-
-const car = new Car("pobi");
-
-console.log(car);     
-console.log(car.name);     
-console.log(car.position);
-
-car.run(5);
-console.log(car.position);
-
-
-//Error 메시지 확인 
-const car1 = new Car("pobi");
-console.log(car1);
-
-try {
-  const car2 = new Car("pobiiii");
-} catch (e) {
-  console.log(e.message);
-}
-
-try {
-  const car3 = new Car("");
-} catch (e) {
-  console.log(e.message);
-}
+export default Car;
