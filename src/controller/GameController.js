@@ -85,6 +85,14 @@ class GameController {
     return names;
   }
 
+
+
+  /* 
+이름을 , 을 기준으로 나누고, map을 통해 공백을 제거해서 배열을 만듦
+그리고, 만약 이름이 비어있으면 에러를 던짐
+그리고 names 배열 반환
+  */
+
   askTryCount(resolve, reject) {
     const self = this;
 
@@ -99,6 +107,11 @@ class GameController {
     });
   }
 
+  /*
+  입력받을 횟수를 요청함. 요청되면 검증되고, 검증된 수로 값을 진행
+  */
+
+
   parseTryCount(input) {
     const value = Number(input);
 
@@ -108,6 +121,10 @@ class GameController {
 
     return value;
   }
+
+  /*
+  받은 문자열을 숫자로 바꿔줌. 숫자가 아니거나 0 이하이면 에러 던짐.
+  */
 
   startRacing(count) {
     Console.print("\n실행 결과");
@@ -121,5 +138,12 @@ class GameController {
     OutputView.printWinners(winners);
   }
 }
+
+/*
+실행 결과 출력
+n번 반복: 자동차들 움직임 턴별 결과 출력
+우승자 계산
+최종 우승자 출력
+*/
 
 export default GameController;
